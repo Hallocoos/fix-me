@@ -1,0 +1,22 @@
+Router
+
+The router is the central component of your applications.
+All other components connect to it in order to send messages to other components.
+The router will perform no business logic, it will just dispatch messages to the destination component(s).
+The router must accept incoming connections from multiple brokers and markets.
+We call the router a market connectivity provider, because it allows brokers to send messages (in FIX format)to markets, without depending on specific implementation of the market.
+
+The router will listen on 2 ports:
+  •Port 5000 for messages from Broker components.
+    When a Broker establishes the connection, the Router assigns it a unique 6 digit ID and communicates the ID to the Broker.
+  •Port 5001 for messages from Market components.
+    When a Market establishes the connection, the Router assigns it a unique 6 digit ID and communicates the ID to the Market.
+
+Brokers and Markets will include the assigned ID in all messages for identification and the Router will use the ID to create the routing table.
+
+Once the Router receives a message it will perform 3 steps:
+  •Validate the message based on the checksum.
+  •Identify the destination in the routing table.
+  •Forward the message.
+
+Run 2 different Processes

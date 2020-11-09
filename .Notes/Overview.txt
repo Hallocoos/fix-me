@@ -1,0 +1,30 @@
+One rainy day, you find out about the FIX Protocol and decide that you want to make a lot of money on the stock exchange by using your programming skills and making the computer do the heavy lifting for you.
+In order to do this you need some hardcore, lightning fast, enterprise grade tools.
+You will use these tools to simulate electronic trading and experiment with trading algorithms.
+
+You will have 3 independent components that will communicate over a network.
+  •A market component.
+  •A broker component.
+  •A message router.
+
+Some key points need to be met in your project in order to develop a winning solution:
+  •Use non blocking sockets.
+  •Use the java executor framework for message handling.
+  •Multi-moduleMavenbuild.
+
+Only a good and clear implementation will be accepted.
+For this to happen, it will have a clean design, will be easy to read and understand by your peers and will be easy to change in case the requirements are modified.
+
+  Light-Bulb: *Chain-of-responsibility pattern*
+
+You need to implement simulation tools for the financial markets that exchange a simplified version of FIX messages.
+The tools will be able to communicate over a network using the TCP protocol.
+The focus in this project are not the trading algos (you can experiment with them after the project is finished), but the implementation of a robust and performant messaging platform.
+
+User stories (Broker):
+  Good input/response
+  Bad input/response
+
+See `Router.txt`
+See `Broker.txt`
+See `Market.txt`
