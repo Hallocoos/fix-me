@@ -3,6 +3,8 @@ package broker;
 import java.io.*;
 import java.net.*;
 import java.util.*;
+import java.util.zip.CRC32;
+import java.util.zip.Checksum;
 
 public class Broker {
     private static final String ROUTER_IP = "127.0.0.1";
@@ -38,7 +40,8 @@ public class Broker {
                 routerOutput.println(input);
                 break;
             } else if (validateInput(input)) {
-                routerOutput.println(input);
+                input += "|" + calculateChecksum(input);
+                routerOutput.println(input.trim().replaceAll("\\s+", "|"));
                 String marketMessage = routerInput.readLine();
                 System.out.println(marketMessage);
             }
@@ -61,5 +64,12 @@ public class Broker {
         if (!isNumeric)
             return false;
         return true;
+    }
+
+    public static long calculateChecksum(String request){
+        byte[] bytes = request.getBytes();
+        Checksum crc32 = new CRC32();
+        crc32.update(bytes, 0, bytes.length);
+        return crc32.getValue();
     }
 }
