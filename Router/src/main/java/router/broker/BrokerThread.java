@@ -26,8 +26,8 @@ public class BrokerThread implements Runnable {
             while (true) {
                 String request = brokerInput.readLine();
                 if (request != null && !request.equals("quit")) {
-                    System.out.println(brokerID + " " + request);
-                    Messaging.sendToMarket(brokerID + " " + request);
+                    System.out.println(brokerID + "|" + request);
+                    Messaging.sendToMarket(brokerID + "|" + request);
                 } else {
                     System.out.println("Connection to broker has been closed.");
                 }

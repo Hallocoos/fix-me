@@ -24,11 +24,10 @@ public class MarketThread implements Runnable {
     public void run() {
         try {
             while (true) {
-                String reponse = null;
+                String response = null;
                 String input = marketInput.readLine();
                 if (input != null) {
-                    reponse = input + "doSomething()";
-                    Messaging.sendToBroker(reponse + " " + marketID);
+                    Messaging.sendToBroker(input + "|" + marketID);
                 } else {
                     System.out.println("Connection to market has been closed.");
                 }

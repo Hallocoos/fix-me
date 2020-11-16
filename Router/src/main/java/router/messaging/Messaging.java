@@ -13,7 +13,7 @@ public class Messaging {
     public static ExecutorService pool = Executors.newFixedThreadPool(100);
 
     public static void sendToBroker(String message) {
-        String id = message.split("\\s+")[0];
+        String id = message.substring(0,6);
         for (BrokerThread broker : brokers) {
             if (broker.getBrokerID().equalsIgnoreCase(id)) {
                 broker.sendToBroker(message);
