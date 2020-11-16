@@ -19,6 +19,14 @@ public class Broker {
             }
         }
         System.out.println("Connected to router!");
+        System.out.println("Commands are `buy` and `sell`:");
+        System.out.println("buy <stock> <amount>:");
+        System.out.println("    -User can attempt to buy <amount> of <stock/s>");
+        System.out.println("buy:");
+        System.out.println("    -Will show user what stocks are available");
+        System.out.println("sell <stock> <amount>:");
+        System.out.println("    -User can attempt to sell <amount> of <stock/s>");
+
         PrintWriter routerOutput = new PrintWriter(routerSocket.getOutputStream(), true);
         BufferedReader routerInput = new BufferedReader(new InputStreamReader(routerSocket.getInputStream()));
         BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
@@ -42,6 +50,8 @@ public class Broker {
     private static boolean validateInput(String input) {
         if (input == null || input.equalsIgnoreCase(""))
             return false;
+        if (input.equalsIgnoreCase("buy") || input.equalsIgnoreCase("sell"))
+            return true;
         String[] validArray = input.split("\\s+");
         if (validArray.length != 3)
             return false;
